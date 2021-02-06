@@ -12,40 +12,39 @@
     <script>
       const canvas = document.querySelector("canvas");
       const ctx = canvas.getContext("2d");
-      const skelly = new Image();
-      skelly.src = "assets/skelly.png";
+      const bomberman = new Image();
+      bomberman.src = "assets/bomberman.png";
 
-      skelly.addEventListener("load", terminouDeCarregar);
+      bomberman.addEventListener("load", terminouDeCarregar);
 
       function desenhaFundo() {
         ctx.fillStyle = "green";
         ctx.fillRect(0, 0, canvas.width, canvas.height);
       }
 
-      let pose = 2;
-      let quadro = 1;
+      let bombermanWidth = 32;
+      let bombermanHeight = 32;
+      let pose = 7;
+      let quadro = 0;
       const POSES = [
-        { qmax: 7, pv: 9 },
-        { qmax: 7, pv: 9 },
-        { qmax: 7, pv: 9 },
-        { qmax: 7, pv: 9 },
-        { qmax: 8, pv: 9 },
-        { qmax: 8, pv: 9 },
-        { qmax: 8, pv: 9 },
-        { qmax: 8, pv: 9 },
-        { qmax: 9, pv: 9 },
-        { qmax: 9, pv: 9 },
-        { qmax: 9, pv: 9 },
-        { qmax: 9, pv: 9 },
-        { qmax: 6, pv: 9 },
-        { qmax: 6, pv: 9 },
-        { qmax: 6, pv: 9 },
-        { qmax: 6, pv: 9 },
-        { qmax: 13, pv: 27 },
-        { qmax: 13, pv: 27 },
-        { qmax: 13, pv: 27 },
-        { qmax: 13, pv: 27 },
-        { qmax: 6, pv: 9 },
+        { qmax: 4, pv: 3 },
+        { qmax: 4, pv: 3 },
+        { qmax: 4, pv: 3 },
+        { qmax: 4, pv: 3 },
+        { qmax: 5, pv: 3 },
+        { qmax: 5, pv: 3 },
+        { qmax: 5, pv: 3 },
+        { qmax: 5, pv: 6 },
+        { qmax: 5, pv: 3 },
+        { qmax: 4, pv: 3 },
+        { qmax: 4, pv: 3 },
+        { qmax: 4, pv: 3 },
+        { qmax: 4, pv: 3 },
+        { qmax: 5, pv: 3 },
+        { qmax: 5, pv: 3 },
+        { qmax: 5, pv: 4 },
+        { qmax: 5, pv: 3 },
+        { qmax: 5, pv: 3 },
       ];
 
       function terminouDeCarregar() {}
@@ -62,20 +61,20 @@
         desenhaFundo();
 
         quadro =
-          quadro > POSES[pose].qmax - 1 ? 0 : quadro + POSES[pose].pv * dt;
+          quadro > POSES[pose].qmax - 1.1 ? 0 : quadro + POSES[pose].pv * dt;
 
         ctx.drawImage(
-          skelly,
+          bomberman,
           // sx, sy, sw, sh
-          Math.floor(quadro) * 64,
-          pose * 64,
-          64,
-          64,
+          Math.floor(quadro) * bombermanHeight,
+          pose * bombermanWidth,
+          bombermanWidth,
+          bombermanHeight,
           // dx, dy, dw, dh
-          0,
-          0,
-          64,
-          64
+          10,
+          10,
+          bombermanWidth,
+          bombermanHeight
         );
 
         requestAnimationFrame(passo);
