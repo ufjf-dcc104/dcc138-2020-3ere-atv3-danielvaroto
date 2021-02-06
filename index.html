@@ -9,6 +9,12 @@
     <h1>DCC138 Atividade03</h1>
     <canvas></canvas>
     <p>por Daniel Varoto (2021)</p>
-    <script></script>
+    <script>
+      const canvas = document.querySelector("canvas");
+      const ctx = canvas.getContext("2d");
+
+      ctx.fillStyle = "green";
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+    </script>
   </body>
 </html>
